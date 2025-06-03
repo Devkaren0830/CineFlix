@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="CSS/Index.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet" />
+</head>
+
+<body>
+    <header>
+        <nav class="menu">
+            <img src="./Images/Captura_de_pantalla_2023-07-30_090042-removebg-preview.png" alt="logo">
+            <div>
+                <button  class="Navegar0">
+                    <span class="icon">
+                        <i class="ri-map-2-fill"></i>
+                    </span>
+                    Navegar
+                </button>
+                <button  class="Navegar1">
+                    <span class="icon">
+                        <i class="ri-movie-fill"></i>
+                    </span>
+                    Peliculas
+                </button>
+                <button class="Navegar2">
+                    <span class="icon">
+                        <i class="ri-film-line"></i>
+                    </span>
+                    Series
+                </button>
+                <section class="search">
+                    <i class="ri-search-line"></i>
+                    <input type="search" id="searchInput" placeholder="Ingrese su búsqueda...">
+                </section>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <div></div>
+        <div id="general">    
+            <section id="sectionPelis">
+                <h3 id="h4pelis">Peliculas</h3>
+                <div>
+                    <button class="aCategory">Todo</button>
+                    <button class="aCategory">Acción</button>
+                    <button class="aCategory">Terror</button>
+                    <button class="aCategory">Animación</button>
+                    <button class="aCategory">Ciencia ficción</button>
+                </div>
+            </section>
+    
+            <section id="peliculas">
+            </section>
+    
+            <section id="sectionSeries">
+                <h3 id="h4series">Series</h3>
+                <div>
+                    <button class="aCategoryS">Todo</button>
+                    <button class="aCategoryS">Acción</button>
+                    <button class="aCategoryS">Crimen</button>
+                    <button class="aCategoryS">Comedia</button>
+                    <button class="aCategoryS">Ciencia ficción</button>
+                    <button class="aCategoryS">Drama</button>
+                    <button class="aCategoryS">Romance</button>
+                </div>
+            </section>
+    
+            <section id="series">
+            </section>
+
+        </div>
+    </main>
+    <script type="module" src="./js/Pelis.js"></script>
+    <script type="module" src="./js/Series.js"></script>
+    <script type="module" src="./js/Navegacion.js"></script>
+    <script type="module" src="./js/Button.js"></script>
+    <script type="module" src="./js/buttonS.js"></script>
+    <!-- manejo de  -->
+</html>

@@ -1,0 +1,469 @@
+* {
+  margin: 0;
+  padding: 0;
+  background-color: #121b24;
+}
+
+body {
+  
+}
+
+header {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  flex-direction: row;
+}
+
+header img {
+  width: 226px;
+  height: 106px;
+}
+
+nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  padding-left: 20px;
+  width: 100%;
+}
+
+nav button {
+  width: 100%;
+  font-size: 20px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  line-height: 40px;
+  gap: 3px;
+}
+
+nav .Navegar0 {
+  color: #4384a7;
+}
+
+nav div{
+  display: flex;
+  gap: 20px;
+}
+/* .menu button:hover, .menu .peliculas {
+    color: #4384a7;
+} */
+
+.menu p {
+  color: #ffffff;
+  font-size: 15px;
+}
+
+#general{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* pelis */
+#sectionPelis, #sectionSeries{
+  text-align: start;
+  width: 72%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#sectionPelis div, #sectionSeries div{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+}
+
+#sectionPelis div button, #sectionSeries div button{
+  color: #fff;
+  font-size: 17px;
+  background-color: transparent;
+}
+
+#peliculas {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 20px;
+  gap: 38px;
+  width: 70%
+}
+
+#img2 {
+  height: 300px;
+  width: 300px;
+}
+
+#divGeneral {
+  height: 100%;
+  width: 300px;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  text-align: left;
+}
+
+#description {
+  display: block;
+  color: #ffffff;
+  font-size: 15px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 200px;
+  text-align: start;
+}
+
+main {
+  grid-column: 2/3;
+}
+
+button {
+  border: none;
+}
+
+#h4 {
+  color: #4384a7;
+  font-size: 15px;
+  text-align: start;
+}
+
+#h4pelis {
+  color: #ffffff;
+  font-size: 20px;
+  padding-left: 20px;
+  margin-top: 20px;
+}
+
+.search i {
+  font-size: 20px;
+  color: #eee;
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  background: #121b24;
+  width: 300px;
+  height: 2.4rem;
+  gap: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  margin-left: 20px;
+}
+
+input {
+  border: none;
+  padding: 10px;
+  color: #fff;
+  font-size: 17px;
+}
+
+#leermas button:hover {
+  color: #ffffff;
+}
+
+#leermas {
+  color: #4384a7;
+}
+
+#div2 {
+  width: 300px;
+  display: flex;
+  gap: 5px;
+}
+
+
+#div {
+  display: flex;
+  flex-direction: column;
+}
+
+/* series */
+#h4series {
+  color: #ffffff;
+  font-size: 20px;
+  padding-left: 20px;
+  margin-top: 20px;
+}
+
+#series {
+  width: 80%;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 20px;
+  gap: 20px;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+#leermas2 button:hover {
+  color: #ffffff;
+}
+
+#leermas2 {
+  color: #4384a7;
+}
+
+/* busqueda */
+#resultados {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+/* Trailer */
+
+#buttonLook {
+  background-color: #4384a7;
+  width: 120px;
+  height: 40px;
+  padding: 10px;
+  font-size: 15px;
+  text-overflow: ellipsis;
+  border-radius: 10px;
+}
+
+#h4Look {
+  color: #fff;
+  font-size: 17px;
+  background-color: transparent;
+}
+
+/* trailer */
+#divGeneralTrailer {
+  display: none;
+  position: absolute;
+  /* Establecer la posición absoluta */
+  top: 0;
+  /* Ajustar la posición vertical si es necesario */
+  left: 0;
+  /* Ajustar la posición horizontal si es necesario */
+  z-index: 9999;
+  /* Establecer un valor alto para el índice z */
+}
+
+
+
+
+/* Style for the modal */
+.modal {
+  display: block;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.modal-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: black;
+  padding: 20px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  width: 70%;
+  height: 70vh;
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 24px;
+  cursor: pointer;
+  color: #fff;
+  background-color: black;
+}
+
+/* Iframe style */
+iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+@media screen and (max-width: 480px) {
+  body {
+    grid-template-columns: 100%;
+  }
+
+  header {
+    width: 100%;
+  }
+
+  nav {
+    padding-left: 10px;
+  }
+
+  #peliculas {
+    padding: 10px;
+    gap: 10px;
+  }
+
+  #divGeneral {
+    width: 100%;
+  }
+
+  #description {
+    width: 100%;
+    white-space: normal;
+    text-align: center;
+  }
+
+  .search {
+    width: 100%;
+    margin-left: 10px;
+  }
+}
+
+/* Responsive for 768px */
+@media screen and (min-width: 481px) and (max-width: 768px) {
+  body {
+    grid-template-columns: 30% 70%;
+  }
+
+  header {
+    width: 30%;
+  }
+
+  nav {
+    padding-left: 15px;
+  }
+
+  #peliculas {
+    padding: 15px;
+    gap: 15px;
+  }
+
+  #divGeneral {
+    width: 100%;
+  }
+
+  #description {
+    width: 100%;
+    white-space: normal;
+    text-align: center;
+  }
+
+  .search {
+    width: 100%;
+    margin-left: 15px;
+  }
+}
+
+/* Responsive for 1200px */
+@media screen and (min-width: 769px) and (max-width: 1200px) {
+  body {
+    grid-template-columns: 25% 75%;
+  }
+
+  header {
+    width: 25%;
+  }
+
+  nav {
+    padding-left: 20px;
+  }
+
+  #peliculas {
+    padding: 20px;
+    gap: 20px;
+  }
+
+  #divGeneral {
+    width: 100%;
+  }
+
+  #description {
+    width: 100%;
+    white-space: normal;
+    text-align: center;
+  }
+
+  .search {
+    width: 100%;
+    margin-left: 20px;
+  }
+}
+
+@media screen and (min-width: 0px) and (max-width: 480px) {
+  header {
+    position: relative;
+    width: 100%;
+    height: 151px;
+  }
+
+  nav button {
+    width: 30%;
+    font-size: 15px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    line-height: 40px;
+    gap: 4px;
+  }
+
+  header img {
+    width: 50%;
+  }
+
+  body {
+    display: block;
+  }
+
+  nav {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  nav div {
+    width: 100%;
+    display: flex;
+    gap: 10px;
+  }
+
+  .search {
+    width: 70%;
+    /* margin-left: 10px; */
+  }
+
+  #description {
+    display: block;
+    color: #ffffff;
+    font-size: 15px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 200px;
+    text-align: start;
+  }
+
+  #peliculas {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    gap: 20px;
+}
+
+}
+
+.ct_item-active{
+  background: #099bea;
+}
+
