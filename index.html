@@ -13,71 +13,177 @@
     <header>
         <nav class="menu">
             <img src="./Images/Captura_de_pantalla_2023-07-30_090042-removebg-preview.png" alt="logo">
-            <div>
-                <button  class="Navegar0">
-                    <span class="icon">
-                        <i class="ri-map-2-fill"></i>
-                    </span>
-                    Navegar
-                </button>
-                <button  class="Navegar1">
-                    <span class="icon">
-                        <i class="ri-movie-fill"></i>
-                    </span>
-                    Peliculas
-                </button>
-                <button class="Navegar2">
-                    <span class="icon">
-                        <i class="ri-film-line"></i>
-                    </span>
-                    Series
-                </button>
-                <section class="search">
-                    <i class="ri-search-line"></i>
-                    <input type="search" id="searchInput" placeholder="Ingrese su búsqueda...">
-                </section>
-            </div>
         </nav>
     </header>
     <main>
         <div></div>
-        <div id="general">    
-            <section id="sectionPelis">
-                <h3 id="h4pelis">Peliculas</h3>
-                <div>
-                    <button class="aCategory">Todo</button>
-                    <button class="aCategory">Acción</button>
-                    <button class="aCategory">Terror</button>
-                    <button class="aCategory">Animación</button>
-                    <button class="aCategory">Ciencia ficción</button>
+        <div id="general">
+            <div idx={idx} class="movie-card">
+                <div class="movie-poster">
+                    <img src={img} alt="">
+                    <div class="movie-score">
+                        <i class="ri-star-fill"></i>
+                        <span>{porcentaje}<sup>%</sup></span>
+                    </div>
+                    <div class="movie-overlay">
+                        <button class="watch-btn"><i class="ri-play-fill"></i> Ver ahora</button>
+                    </div>
                 </div>
-            </section>
-    
-            <section id="peliculas">
-            </section>
-    
-            <section id="sectionSeries">
-                <h3 id="h4series">Series</h3>
-                <div>
-                    <button class="aCategoryS">Todo</button>
-                    <button class="aCategoryS">Acción</button>
-                    <button class="aCategoryS">Crimen</button>
-                    <button class="aCategoryS">Comedia</button>
-                    <button class="aCategoryS">Ciencia ficción</button>
-                    <button class="aCategoryS">Drama</button>
-                    <button class="aCategoryS">Romance</button>
+                <div class="movie-info">
+                    <h3>{Nombre}</h3>
+                    <p class="release-date"><i class="ri-calendar-2-line"></i> {Fecha}</p>
                 </div>
-            </section>
-    
-            <section id="series">
-            </section>
-
+            </div>
+        </div>
         </div>
     </main>
-    <script type="module" src="./js/Pelis.js"></script>
-    <script type="module" src="./js/Series.js"></script>
-    <script type="module" src="./js/Navegacion.js"></script>
-    <script type="module" src="./js/Button.js"></script>
-    <script type="module" src="./js/buttonS.js"></script>
+    <script type="module" src="./js/Home.js"></script>
+    <style>
+        #general {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 40px 0;
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            min-height: 100vh;
+        }
+
+        .movie-card {
+            background: #22223b;
+            border-radius: 18px;
+            box-shadow: 0 8px 32px rgba(30, 41, 59, 0.25);
+            overflow: hidden;
+            width: 320px;
+            transition: transform 0.2s, box-shadow 0.2s;
+            margin: 20px;
+            position: relative;
+        }
+
+        .movie-card:hover {
+            transform: translateY(-8px) scale(1.03);
+            box-shadow: 0 16px 40px rgba(30, 41, 59, 0.35);
+        }
+
+        .movie-poster {
+            position: relative;
+            width: 100%;
+            height: 420px;
+            overflow: hidden;
+        }
+
+        .movie-poster img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: filter 0.3s;
+            border-bottom: 2px solid #4f46e5;
+        }
+
+        .movie-card:hover .movie-poster img {
+            filter: brightness(0.8) blur(1px);
+        }
+
+        .movie-score {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            background: rgba(34, 197, 94, 0.92);
+            color: #fff;
+            padding: 8px 14px;
+            border-radius: 16px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            box-shadow: 0 2px 8px rgba(34, 197, 94, 0.15);
+        }
+
+        .movie-score i {
+            color: #ffe066;
+            font-size: 1.2em;
+        }
+
+        .movie-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(30, 41, 59, 0.65);
+            opacity: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.3s;
+        }
+
+        .movie-card:hover .movie-overlay {
+            opacity: 1;
+        }
+
+        .watch-btn {
+            background: linear-gradient(90deg, #4f46e5 0%, #06b6d4 100%);
+            color: #fff;
+            border: none;
+            border-radius: 24px;
+            padding: 12px 32px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 2px 12px rgba(79, 70, 229, 0.18);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: background 0.2s, transform 0.2s;
+        }
+
+        .watch-btn:hover {
+            background: linear-gradient(90deg, #06b6d4 0%, #4f46e5 100%);
+            transform: scale(1.05);
+        }
+
+        .movie-info {
+            padding: 22px 20px 18px 20px;
+            background: #232946;
+            color: #fff;
+            text-align: left;
+        }
+
+        .movie-info h3 {
+            margin: 0 0 8px 0;
+            font-size: 1.35rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .release-date {
+            color: #a5b4fc;
+            font-size: 1rem;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .release-date i {
+            font-size: 1.1em;
+        }
+
+        @media (max-width: 600px) {
+            #general {
+                padding: 16px 0;
+            }
+
+            .movie-card {
+                width: 98vw;
+                margin: 10px 1vw;
+            }
+
+            .movie-poster {
+                height: 240px;
+            }
+        }
+    </style>
+    <!-- <script type="module" src="./js/api.js"></script> -->
     <!-- manejo de  -->
+
 </html>
