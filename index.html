@@ -16,7 +16,21 @@
         </nav>
     </header>
     <main>
-        <div></div>
+        <div id="trailerModal" class="modal">
+            <div class="modal-content">
+                <span class="close-button">&times;</span>
+                <div class="video-container">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen>
+                    </iframe>
+
+                </div>
+            </div>
+        </div>
+
+        <button id="openModalBtn">Ver Tráiler</button>
         <div id="general">
             <div idx={idx} class="movie-card">
                 <div class="movie-poster">
@@ -26,7 +40,9 @@
                         <span>{porcentaje}<sup>%</sup></span>
                     </div>
                     <div class="movie-overlay">
-                        <button class="watch-btn"><i class="ri-play-fill"></i> Ver ahora</button>
+                        <button onclick="construir.consultar_trailer(this)" class="watch-btn"><i
+                                class="ri-play-fill"></i> Ver
+                            ahora</button>
                     </div>
                 </div>
                 <div class="movie-info">

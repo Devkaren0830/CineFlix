@@ -1,4 +1,4 @@
-import { registros, obtener_peliculas } from './api.js'
+import { registros, obtener_peliculas, obtener_trailer } from './api.js'
 
 export class construirRegistros {
     carta;
@@ -46,7 +46,17 @@ export class construirRegistros {
         document.querySelector('#general').innerHTML = html;
     }
 
-    consultar_traile(element) {
+    async consultar_trailer(element) {
+        console.log(element);
+        let pos = element.closest('.movie-card').
+            getAttribute('idx'); // ¡Así es correcto!
+        console.log(pos);
+        let id = registros.datos[pos].id;
+        console.log(id, ' ID');
+        let r = await obtener_trailer(id);
+        console.log('Trailer ', r);
+        document.querySelector('.modal').style.display = 'block';
+        document.querySelector('frame').src = 'https://www.youtube.com/embed/' + r.key;
 
     }
 }

@@ -4,6 +4,7 @@ export let registros = {
     cargando: true,
     datos: {}
 }
+
 /**
  * Función para obtener datos de TMDb de forma genérica.
  * @param {string} endpoint - El endpoint de la API (ej. 'movie/popular', 'tv/top_rated', 'search/movie').
@@ -70,4 +71,9 @@ export async function obtener_peliculas() {
     console.log(movies);
     registros.cargando = false;
     registros.datos = movies;
+}
+
+export async function obtener_trailer(id) {
+    let respuesta = await fetchDataFromTMDb(`movie/${id}/videos`);
+    console.log(respuesta, ' TRAILER');
 }
