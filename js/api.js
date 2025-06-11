@@ -71,9 +71,13 @@ export async function obtener_peliculas() {
     console.log(movies);
     registros.cargando = false;
     registros.datos = movies;
+    registros.datos.forEach((element, pos) => {
+        element.idx = pos; // Añadir índice a cada elemento
+    })
 }
 
 export async function obtener_trailer(id) {
     let respuesta = await fetchDataFromTMDb(`movie/${id}/videos`);
     console.log(respuesta, ' TRAILER');
+    return respuesta;
 }

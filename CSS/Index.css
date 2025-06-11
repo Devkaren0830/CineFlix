@@ -1,470 +1,585 @@
+/* RESET Y BASE */
 * {
   margin: 0;
   padding: 0;
-  background-color: #121b24;
+  box-sizing: border-box;
+  background: none;
 }
 
-body {}
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: #121b24;
+  color: #fff;
+  min-height: 100vh;
+}
 
+/* MENU HEADER */
 header {
-  display: flex;
-  height: 100%;
   width: 100%;
-  flex-direction: row;
+  box-shadow: 0 2px 12px rgba(30, 41, 59, 0.10);
+  background: #121b24;
 }
 
-header img {
-  width: 226px;
-  height: 106px;
-}
-
-nav {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
-  padding-left: 20px;
-  width: 100%;
-}
-
-nav button {
-  width: 100%;
-  font-size: 20px;
-  color: #fff;
+.menu {
   display: flex;
   align-items: center;
-  line-height: 40px;
-  gap: 3px;
-}
-
-nav .Navegar0 {
-  color: #4384a7;
-}
-
-nav div {
-  display: flex;
-  gap: 20px;
-}
-
-/* .menu button:hover, .menu .peliculas {
-    color: #4384a7;
-} */
-
-.menu p {
-  color: #ffffff;
-  font-size: 15px;
-}
-
-#general {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-/* pelis */
-#sectionPelis,
-#sectionSeries {
-  text-align: start;
-  width: 72%;
-  display: flex;
   justify-content: space-between;
-  align-items: center;
+  background: linear-gradient(90deg, #232946 0%, #4f46e5 100%);
+  padding: 0 40px;
+  height: 80px;
+  position: relative;
+  z-index: 10;
 }
 
-#sectionPelis div,
-#sectionSeries div {
+.cineflix-logo {
+  font-family: 'Segoe UI', 'Arial', sans-serif;
+  font-size: 3.2rem;
+  font-weight: 900;
+  letter-spacing: 3px;
+  color: #06b6d4;
+  padding: 0 18px;
+  margin-right: 32px;
+  background: linear-gradient(90deg, #06b6d4 0%, #4f46e5 60%, #a5b4fc 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow:
+    0 0 12px #06b6d4cc,
+    0 2px 16px #4f46e5cc,
+    2px 2px 0 #232946,
+    0 0 2px #fff;
+  filter: brightness(1.2) drop-shadow(0 0 8px #06b6d4aa);
+  border-radius: 8px;
+  border-bottom: 3px solid #06b6d4;
+  -webkit-text-stroke: 1.5px #232946;
+  transition: filter 0.2s;
+}
+
+.cineflix-logo:hover {
+  filter: brightness(1.4) drop-shadow(0 0 16px #06b6d4cc);
+}
+
+.menu-items {
+  list-style: none;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 30px;
+  gap: 32px;
+  margin: 0;
+  padding: 0;
 }
 
-#sectionPelis div button,
-#sectionSeries div button {
+.menu-items li {
+  position: relative;
+}
+
+.menu-items a {
   color: #fff;
-  font-size: 17px;
-  background-color: transparent;
-}
-
-#peliculas {
-  display: flex;
-  flex-wrap: wrap;
-  padding: 20px;
-  gap: 38px;
-  width: 70%
-}
-
-#img2 {
-  height: 300px;
-  width: 300px;
-}
-
-#divGeneral {
-  height: 100%;
-  width: 300px;
-  margin-bottom: 10px;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  text-align: left;
-}
-
-#description {
+  text-decoration: none;
+  font-size: 1.15rem;
+  font-weight: 600;
+  padding: 10px 22px;
+  border-radius: 22px;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s, transform 0.2s;
   display: block;
-  color: #ffffff;
-  font-size: 15px;
-  white-space: nowrap;
+  position: relative;
   overflow: hidden;
-  text-overflow: ellipsis;
-  width: 200px;
-  text-align: start;
 }
 
-main {
-  grid-column: 2/3;
+.menu-items a::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, #06b6d4 0%, #4f46e5 100%);
+  opacity: 0;
+  z-index: 0;
+  transition: opacity 0.25s;
+  border-radius: 22px;
 }
 
-button {
-  border: none;
+.menu-items a:hover,
+.menu-items a:focus {
+  color: #232946;
+  background: #06b6d4;
+  box-shadow: 0 2px 12px rgba(6, 182, 212, 0.18);
+  transform: translateY(-2px) scale(1.06);
 }
 
-#h4 {
-  color: #4384a7;
-  font-size: 15px;
-  text-align: start;
+.menu-items a.active,
+.menu-items a[aria-current="page"] {
+  background: linear-gradient(90deg, #06b6d4 0%, #4f46e5 100%);
+  color: #fff;
+  box-shadow: 0 2px 16px #06b6d4aa;
+  font-weight: 700;
 }
 
-#h4pelis {
-  color: #ffffff;
-  font-size: 20px;
-  padding-left: 20px;
-  margin-top: 20px;
+/* MENU RESPONSIVE */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  margin-left: 16px;
 }
 
-.search i {
-  font-size: 20px;
-  color: #eee;
+.menu-toggle span {
+  height: 4px;
+  width: 32px;
+  background: #06b6d4;
+  margin: 5px 0;
+  border-radius: 2px;
+  transition: 0.3s;
 }
 
+@media (max-width: 900px) {
+  .menu {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 12px 16px;
+    height: auto;
+  }
+
+  .cineflix-logo {
+    margin-bottom: 10px;
+    margin-right: 0;
+    font-size: 2.2rem;
+  }
+
+  .menu-items {
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .menu-items a {
+    width: 100%;
+    text-align: left;
+    padding: 12px 18px;
+  }
+
+  .menu-toggle {
+    display: flex;
+    position: absolute;
+    right: 24px;
+    top: 24px;
+  }
+
+  .menu-items {
+    display: none;
+  }
+
+  .menu.open .menu-items {
+    display: flex;
+  }
+}
+
+/* BUSCADOR */
 .search {
   display: flex;
   align-items: center;
-  background: #121b24;
-  width: 300px;
-  height: 2.4rem;
-  gap: 10px;
-  padding: 10px;
-  border-radius: 10px;
-  margin-left: 20px;
+  background: #181f2a;
+  border-radius: 18px;
+  box-shadow: 0 2px 8px #23294633;
+  padding: 0 14px;
+  margin: 0 24px 0 0;
+  height: 44px;
+  min-width: 220px;
+  max-width: 340px;
+  flex: 1 1 220px;
+  transition: box-shadow 0.2s, background 0.2s;
+  border: 2px solid transparent;
+  position: relative;
 }
 
-input {
+.search:focus-within {
+  box-shadow: 0 4px 16px #06b6d4aa;
+  border-color: #06b6d4;
+  background: #232946;
+}
+
+.search i {
+  font-size: 1.4rem;
+  color: #06b6d4;
+  margin-right: 8px;
+  transition: color 0.2s;
+}
+
+.search input[type="search"] {
+  background: transparent;
   border: none;
-  padding: 10px;
+  outline: none;
   color: #fff;
-  font-size: 17px;
+  font-size: 1.08rem;
+  width: 100%;
+  padding: 10px 0;
+  font-family: inherit;
+  transition: color 0.2s;
 }
 
-#leermas button:hover {
-  color: #ffffff;
+.search input[type="search"]::placeholder {
+  color: #a5b4fc;
+  opacity: 1;
+  font-style: italic;
+  letter-spacing: 0.5px;
 }
 
-#leermas {
-  color: #4384a7;
+/* Responsive buscador */
+@media (max-width: 900px) {
+  .search {
+    margin: 10px 0 10px 0;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    order: 2;
+  }
+
+  .menu {
+    flex-wrap: wrap;
+  }
 }
 
-#div2 {
-  width: 300px;
+@media (max-width: 600px) {
+  .search {
+    margin: 10px 0 10px 0;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    order: 2;
+  }
+}
+
+/* TARJETAS DE PELICULAS */
+#general {
   display: flex;
-  gap: 5px;
-}
-
-
-#div {
-  display: flex;
-  flex-direction: column;
-}
-
-/* series */
-#h4series {
-  color: #ffffff;
-  font-size: 20px;
-  padding-left: 20px;
-  margin-top: 20px;
-}
-
-#series {
-  width: 80%;
-  display: flex;
-  flex-wrap: wrap;
-  padding: 20px;
-  gap: 20px;
-  justify-content: flex-start;
-  align-items: center;
-}
-
-#leermas2 button:hover {
-  color: #ffffff;
-}
-
-#leermas2 {
-  color: #4384a7;
-}
-
-/* busqueda */
-#resultados {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-}
-
-/* Trailer */
-
-#buttonLook {
-  background-color: #4384a7;
-  width: 120px;
-  height: 40px;
-  padding: 10px;
-  font-size: 15px;
-  text-overflow: ellipsis;
-  border-radius: 10px;
-}
-
-#h4Look {
-  color: #fff;
-  font-size: 17px;
-  background-color: transparent;
-}
-
-/* trailer */
-#divGeneralTrailer {
-  display: none;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 40px 0;
+  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+  min-height: 100vh;
   position: absolute;
-  /* Establecer la posición absoluta */
-  top: 0;
-  /* Ajustar la posición vertical si es necesario */
-  left: 0;
-  /* Ajustar la posición horizontal si es necesario */
-  z-index: 9999;
-  /* Establecer un valor alto para el índice z */
+  flex-wrap: wrap;
 }
 
+.movie-card {
+  background: #22223b;
+  border-radius: 18px;
+  box-shadow: 0 8px 32px rgba(30, 41, 59, 0.25);
+  overflow: hidden;
+  width: 320px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  margin: 20px;
+  position: relative;
+}
 
+.movie-card:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 16px 40px rgba(30, 41, 59, 0.35);
+}
 
+.movie-poster {
+  position: relative;
+  width: 100%;
+  height: 420px;
+  overflow: hidden;
+}
 
-/* Style for the modal */
-.modal {
+.movie-poster img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   display: block;
+  transition: filter 0.3s;
+  border-bottom: 2px solid #4f46e5;
+}
+
+.movie-card:hover .movie-poster img {
+  filter: brightness(0.8) blur(1px);
+}
+
+.movie-score {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  background: rgba(34, 197, 94, 0.92);
+  color: #fff;
+  padding: 8px 14px;
+  border-radius: 16px;
+  font-weight: bold;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 0 2px 8px rgba(34, 197, 94, 0.15);
+}
+
+.movie-score i {
+  color: #ffe066;
+  font-size: 1.2em;
+}
+
+.movie-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(30, 41, 59, 0.65);
+  opacity: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.3s;
+}
+
+.movie-card:hover .movie-overlay {
+  opacity: 1;
+}
+
+.watch-btn {
+  background: linear-gradient(90deg, #4f46e5 0%, #06b6d4 100%);
+  color: #fff;
+  border: none;
+  border-radius: 24px;
+  padding: 12px 32px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 2px 12px rgba(79, 70, 229, 0.18);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.watch-btn:hover {
+  background: linear-gradient(90deg, #06b6d4 0%, #4f46e5 100%);
+  transform: scale(1.05);
+}
+
+.movie-info {
+  padding: 22px 20px 18px 20px;
+  background: #232946;
+  color: #fff;
+  text-align: left;
+}
+
+.movie-info h3 {
+  margin: 0 0 8px 0;
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.release-date {
+  color: #a5b4fc;
+  font-size: 1rem;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.release-date i {
+  font-size: 1.1em;
+}
+
+/* MODAL TRAILER */
+.modal {
+  display: none;
   position: fixed;
   z-index: 1000;
   left: 0;
   top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.7);
+  width: 100vw;
+  height: 100vh;
+  background: rgba(18, 27, 36, 0.92);
+  backdrop-filter: blur(6px) brightness(0.9);
+  animation: modalFadeIn 0.4s;
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 .modal-content {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: black;
-  padding: 20px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
-  width: 70%;
-  height: 70vh;
+  transform: translate(-50%, -50%) scale(1);
+  background: linear-gradient(135deg, #232946 60%, #121b24 100%);
+  padding: 28px 24px 24px 24px;
+  box-shadow: 0 8px 40px #000a 0.5;
+  width: 90%;
+  max-width: 700px;
+  height: 60vh;
+  border-radius: 22px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  animation: modalPopIn 0.4s;
+}
+
+@keyframes modalPopIn {
+  from {
+    transform: translate(-50%, -50%) scale(0.92);
+    opacity: 0.5;
+  }
+
+  to {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
 }
 
 .close-button {
   position: absolute;
-  top: 10px;
-  right: 10px;
-  font-size: 24px;
+  top: 14px;
+  right: 18px;
+  font-size: 2.2rem;
   cursor: pointer;
   color: #fff;
-  background-color: black;
+  background: linear-gradient(90deg, #06b6d4 0%, #4f46e5 100%);
+  border: none;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 12px #06b6d488;
+  transition: background 0.2s, transform 0.2s;
+  z-index: 10;
 }
 
-/* Iframe style */
-iframe {
+.close-button:hover {
+  background: linear-gradient(90deg, #4f46e5 0%, #06b6d4 100%);
+  color: #ffe066;
+  transform: scale(1.12) rotate(8deg);
+}
+
+.video-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-top: 16px;
+  background: #000;
+  box-shadow: 0 2px 16px #23294655;
+}
+
+.modal-content iframe {
   width: 100%;
   height: 100%;
   border: none;
+  border-radius: 12px;
+  background: #000;
 }
 
-@media screen and (max-width: 480px) {
-  body {
-    grid-template-columns: 100%;
+/* Responsive modal */
+@media (max-width: 700px) {
+  .modal-content {
+    width: 98vw;
+    height: 38vh;
+    min-height: 220px;
+    padding: 12px 4vw 12px 4vw;
   }
 
-  header {
-    width: 100%;
+  .close-button {
+    font-size: 1.5rem;
+    width: 36px;
+    height: 36px;
+    top: 8px;
+    right: 8px;
   }
 
-  nav {
-    padding-left: 10px;
-  }
-
-  #peliculas {
-    padding: 10px;
-    gap: 10px;
-  }
-
-  #divGeneral {
-    width: 100%;
-  }
-
-  #description {
-    width: 100%;
-    white-space: normal;
-    text-align: center;
-  }
-
-  .search {
-    width: 100%;
-    margin-left: 10px;
+  .video-container {
+    margin-top: 8px;
   }
 }
 
-/* Responsive for 768px */
-@media screen and (min-width: 481px) and (max-width: 768px) {
-  body {
-    grid-template-columns: 30% 70%;
+/* LOADER SOLO BOLITA */
+#loader-backdrop {
+  position: fixed;
+  z-index: 2000;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(18, 27, 36, 0.98);
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.3s;
+}
+
+.loader-spinner {
+  margin-top: 25%;
+  /* width: 64px; */
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.loader-dot {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: linear-gradient(90deg, #06b6d4 0%, #4f46e5 100%);
+  box-shadow: 0 0 24px #06b6d4cc, 0 0 48px #4f46e5aa;
+  animation: loader-bounce 1s infinite cubic-bezier(.68, -0.55, .27, 1.55);
+}
+
+@keyframes loader-bounce {
+
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
   }
 
-  header {
-    width: 30%;
-  }
-
-  nav {
-    padding-left: 15px;
-  }
-
-  #peliculas {
-    padding: 15px;
-    gap: 15px;
-  }
-
-  #divGeneral {
-    width: 100%;
-  }
-
-  #description {
-    width: 100%;
-    white-space: normal;
-    text-align: center;
-  }
-
-  .search {
-    width: 100%;
-    margin-left: 15px;
+  50% {
+    transform: translateY(-32px) scale(1.2);
   }
 }
 
-/* Responsive for 1200px */
-@media screen and (min-width: 769px) and (max-width: 1200px) {
-  body {
-    grid-template-columns: 25% 75%;
-  }
-
-  header {
-    width: 25%;
-  }
-
-  nav {
-    padding-left: 20px;
-  }
-
-  #peliculas {
-    padding: 20px;
-    gap: 20px;
-  }
-
-  #divGeneral {
-    width: 100%;
-  }
-
-  #description {
-    width: 100%;
-    white-space: normal;
-    text-align: center;
-  }
-
-  .search {
-    width: 100%;
-    margin-left: 20px;
-  }
-}
-
-@media screen and (min-width: 0px) and (max-width: 480px) {
-  header {
-    position: relative;
-    width: 100%;
-    height: 151px;
-  }
-
-  nav button {
-    width: 30%;
-    font-size: 15px;
-    color: #fff;
-    display: flex;
-    align-items: center;
-    line-height: 40px;
-    gap: 4px;
-  }
-
-  header img {
-    width: 50%;
-  }
-
-  body {
-    display: block;
-  }
-
-  nav {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-
-  nav div {
-    width: 100%;
-    display: flex;
-    gap: 10px;
-  }
-
-  .search {
-    width: 70%;
-    /* margin-left: 10px; */
-  }
-
-  #description {
-    display: block;
-    color: #ffffff;
-    font-size: 15px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    width: 200px;
-    text-align: start;
-  }
-
-  #peliculas {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-    gap: 20px;
-  }
-
-}
-
+/* UTILIDADES */
 .ct_item-active {
   background: #099bea;
+}
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+  #general {
+    padding: 16px 0;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .movie-card {
+    width: 98vw;
+    margin: 10px 1vw;
+  }
+
+  .movie-poster {
+    height: 240px;
+  }
+
+  .cineflix-logo {
+    font-size: 2rem;
+    padding: 0 8px;
+    margin-bottom: 8px;
+  }
+
+  .menu {
+    padding: 0 10px;
+  }
 }

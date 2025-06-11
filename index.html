@@ -4,33 +4,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>CineFlix</title>
     <link rel="stylesheet" href="CSS/Index.css">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet" />
 </head>
 
 <body>
+    <!-- Loader -->
+    <div id="loader-backdrop">
+        <div class="loader-spinner">
+            <div class="loader-dot"></div>
+        </div>
+    </div>
     <header>
         <nav class="menu">
-            <img src="./Images/Captura_de_pantalla_2023-07-30_090042-removebg-preview.png" alt="logo">
+            <span class="cineflix-logo">CineFlix</span>
+            <form class="search" autocomplete="off">
+                <i class="ri-search-line"></i>
+                <input onkeyup="construir.buscador(this) " type="search" placeholder="Buscar películas o series..." />
+            </form>
+            <div class="menu-toggle" id="menuToggle" aria-label="Abrir menú" tabindex="0">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="menu-items" id="menuItems">
+                <li onclick="construir.carts(registros.datos, true)"><a href="#" aria-current="page">Inicio</a></li>
+                <li onclick="construir.buscar_peliculas_series(1)"><a href="#">Películas</a></li>
+                <li onclick="construir.buscar_peliculas_series(2)"><a href="#">Series</a></li>
+                <!-- <li><a href="./contacto.html">Contacto</a></li>
+                <li><a href="./acerca.html">Acerca de</a></li> -->
+            </ul>
         </nav>
     </header>
     <main>
         <div id="trailerModal" class="modal">
             <div class="modal-content">
-                <span class="close-button">&times;</span>
+                <span onclick="construir.cerrar_modal()" class="close-button">&times;</span>
                 <div class="video-container">
                     <iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ"
                         title="YouTube video player" frameborder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                         allowfullscreen>
                     </iframe>
-
                 </div>
             </div>
         </div>
-
-        <button id="openModalBtn">Ver Tráiler</button>
         <div id="general">
             <div idx={idx} class="movie-card">
                 <div class="movie-poster">
@@ -51,155 +70,21 @@
                 </div>
             </div>
         </div>
-        </div>
     </main>
+    <script>
+        // Menú hamburguesa responsivo
+        const menuToggle = document.getElementById('menuToggle');
+        const menu = document.querySelector('.menu');
+        menuToggle.addEventListener('click', () => {
+            menu.classList.toggle('open');
+        });
+        menuToggle.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                menu.classList.toggle('open');
+            }
+        });
+    </script>
     <script type="module" src="./js/Home.js"></script>
-    <style>
-        #general {
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            padding: 40px 0;
-            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-            min-height: 100vh;
-        }
-
-        .movie-card {
-            background: #22223b;
-            border-radius: 18px;
-            box-shadow: 0 8px 32px rgba(30, 41, 59, 0.25);
-            overflow: hidden;
-            width: 320px;
-            transition: transform 0.2s, box-shadow 0.2s;
-            margin: 20px;
-            position: relative;
-        }
-
-        .movie-card:hover {
-            transform: translateY(-8px) scale(1.03);
-            box-shadow: 0 16px 40px rgba(30, 41, 59, 0.35);
-        }
-
-        .movie-poster {
-            position: relative;
-            width: 100%;
-            height: 420px;
-            overflow: hidden;
-        }
-
-        .movie-poster img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-            transition: filter 0.3s;
-            border-bottom: 2px solid #4f46e5;
-        }
-
-        .movie-card:hover .movie-poster img {
-            filter: brightness(0.8) blur(1px);
-        }
-
-        .movie-score {
-            position: absolute;
-            top: 16px;
-            left: 16px;
-            background: rgba(34, 197, 94, 0.92);
-            color: #fff;
-            padding: 8px 14px;
-            border-radius: 16px;
-            font-weight: bold;
-            font-size: 1.1rem;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            box-shadow: 0 2px 8px rgba(34, 197, 94, 0.15);
-        }
-
-        .movie-score i {
-            color: #ffe066;
-            font-size: 1.2em;
-        }
-
-        .movie-overlay {
-            position: absolute;
-            inset: 0;
-            background: rgba(30, 41, 59, 0.65);
-            opacity: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: opacity 0.3s;
-        }
-
-        .movie-card:hover .movie-overlay {
-            opacity: 1;
-        }
-
-        .watch-btn {
-            background: linear-gradient(90deg, #4f46e5 0%, #06b6d4 100%);
-            color: #fff;
-            border: none;
-            border-radius: 24px;
-            padding: 12px 32px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            box-shadow: 0 2px 12px rgba(79, 70, 229, 0.18);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: background 0.2s, transform 0.2s;
-        }
-
-        .watch-btn:hover {
-            background: linear-gradient(90deg, #06b6d4 0%, #4f46e5 100%);
-            transform: scale(1.05);
-        }
-
-        .movie-info {
-            padding: 22px 20px 18px 20px;
-            background: #232946;
-            color: #fff;
-            text-align: left;
-        }
-
-        .movie-info h3 {
-            margin: 0 0 8px 0;
-            font-size: 1.35rem;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-        }
-
-        .release-date {
-            color: #a5b4fc;
-            font-size: 1rem;
-            margin: 0;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .release-date i {
-            font-size: 1.1em;
-        }
-
-        @media (max-width: 600px) {
-            #general {
-                padding: 16px 0;
-            }
-
-            .movie-card {
-                width: 98vw;
-                margin: 10px 1vw;
-            }
-
-            .movie-poster {
-                height: 240px;
-            }
-        }
-    </style>
-    <!-- <script type="module" src="./js/api.js"></script> -->
-    <!-- manejo de  -->
+</body>
 
 </html>
